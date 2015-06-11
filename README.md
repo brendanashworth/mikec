@@ -21,7 +21,7 @@ main:
     sys  0x12   ; syscall to exit
 ```
 
-``bash
+```bash
 $ mikec -in program.asm -out program
 ```
 
