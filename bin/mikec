@@ -7,9 +7,15 @@ var program = require('commander');
 
 program
     .version(require('../package').version)
-    .option('-o, --output <file>', 'output file')
-    .option('-i, --input <file>', 'input file')
+    .option('-o, --output <file>', 'output file (required)')
+    .option('-i, --input <file>', 'input file (required)')
     .parse(process.argv);
+
+// Make sure both input and output were given
+if (!program.input || !program.output) {
+    program.outputHelp();
+    process.exit(1);
+}
 
 fs.readFile(program.input, { encoding: 'utf8' }, function(err, data) {
     if (err) throw err;
