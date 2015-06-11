@@ -1,6 +1,6 @@
 {
   "name": "mikec",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "description": "mike compiler",
   "main": "index.js",
   "bin": "./bin/mikec",
