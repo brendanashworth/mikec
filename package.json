@@ -1,0 +1,29 @@
+{
+  "name": "mikec",
+  "version": "0.0.0",
+  "description": "mike compiler",
+  "main": "index.js",
+  "scripts": {
+    "test": "./node_modules/.bin/tap test/**/*.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/brendanashworth/mikec"
+  },
+  "keywords": [
+    "mike"
+  ],
+  "author": "Brendan Ashworth",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/brendanashworth/mikec/issues"
+  },
+  "homepage": "https://github.com/brendanashworth/mikec",
+  "dependencies": {
+    "flatit": "^1.1.0"
+  },
+  "devDependencies": {
+    "tap": "^1.2.0",
+    "tape": "^4.0.0"
+  }
+}
