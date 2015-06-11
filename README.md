@@ -22,7 +22,7 @@ main:
 ```
 
 ```bash
-$ mikec -in program.asm -out program
+$ mikec -i program.asm -o program
 ```
 
 Then run it with the mike virtual machine (link pending).
