@@ -1,4 +1,4 @@
-# mikec
+# mikec [![Build Status](https://travis-ci.org/brendanashworth/mikec.svg)](https://travis-ci.org/brendanashworth/mikec)
 
 > An Intel-flavored assembly compiler for the [mike vm](#).
 
