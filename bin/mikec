@@ -1,0 +1,27 @@
+#!/usr/bin/env node
+
+const Parser = require('../src/Parser');
+const fs = require('fs');
+
+var program = require('commander');
+
+program
+    .version(require('../package').version)
+    .option('-o, --output <file>', 'output file')
+    .option('-i, --input <file>', 'input file')
+    .parse(process.argv);
+
+fs.readFile(program.input, { encoding: 'utf8' }, function(err, data) {
+    if (err) throw err;
+
+    var parser = new Parser(data);
+    parser.start();
+
+    var compiled = new Buffer(parser.compiled);
+
+    fs.writeFile(program.output, compiled, function(err) {
+        if (err) throw err;
+
+        // done! don't print anything and the process will shut down
+    });
+});

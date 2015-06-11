@@ -3,6 +3,7 @@
   "version": "0.0.0",
   "description": "mike compiler",
   "main": "index.js",
+  "bin": "./bin/mikec",
   "scripts": {
     "test": "./node_modules/.bin/tap test/**/*.js"
   },
@@ -20,6 +21,7 @@
   },
   "homepage": "https://github.com/brendanashworth/mikec",
   "dependencies": {
+    "commander": "^2.8.1",
     "flatit": "^1.1.0"
   },
   "devDependencies": {
