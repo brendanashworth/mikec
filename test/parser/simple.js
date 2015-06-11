@@ -3,6 +3,24 @@
 const test = require('tape');
 const Parser = require('../../src/Parser');
 
+test('empty line', function(t) {
+    t.plan(1);
+
+    var parser = new Parser('');
+    parser.start();
+
+    t.deepEqual(parser.compiled, []);
+});
+
+test('line without opcode', function(t) {
+    t.plan(1);
+
+    var parser = new Parser('; comment starts at column 0');
+    parser.start();
+
+    t.deepEqual(parser.compiled, []);
+});
+
 test('single opcode', function(t) {
     t.plan(1);
 
