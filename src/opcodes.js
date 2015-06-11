@@ -11,11 +11,11 @@ module.exports = {
     // 0x2. memory management
     'load' : 0x20,
     // 0x4. integer arithmetic
-    'add'  : 0x40,
-    'sub'  : 0x41,
-    'mul'  : 0x42,
-    'div'  : 0x43,
-    'rem'  : 0x44,
+    'iadd' : 0x40,
+    'isub' : 0x41,
+    'imul' : 0x42,
+    'idiv' : 0x43,
+    'irem' : 0x44,
     // 0x5. & 0x6. comparison
     'jeq'  : 0x50,
     'jneq' : 0x51,

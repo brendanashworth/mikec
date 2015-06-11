@@ -24,7 +24,7 @@ test('line without opcode', function(t) {
 test('single opcode', function(t) {
     t.plan(1);
 
-    var parser = new Parser('add');
+    var parser = new Parser('iadd');
     parser.start();
 
     t.deepEqual(parser.compiled, [0x40]);
