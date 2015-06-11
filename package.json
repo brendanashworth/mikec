@@ -21,8 +21,7 @@
   },
   "homepage": "https://github.com/brendanashworth/mikec",
   "dependencies": {
-    "commander": "^2.8.1",
-    "flatit": "^1.1.0"
+    "commander": "^2.8.1"
   },
   "devDependencies": {
     "tap": "^1.2.0",

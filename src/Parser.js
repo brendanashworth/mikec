@@ -1,7 +1,6 @@
 'use strict';
 
 const assert = require('assert');
-const flat = require('flatit');
 const opcodes = require('./opcodes');
 
 const REGEX_JUMP = /([a-zA-Z]+):/;
