@@ -1,6 +1,7 @@
 'use strict';
 
 const assert = require('assert');
+const debug = require('debug')('mikec');
 const opcodes = require('./opcodes');
 
 const REGEX_JUMP = /([a-zA-Z]+):/;
@@ -24,6 +25,10 @@ function Parser(data) {
 // Emit a bytecode.
 Parser.prototype.emit = function(byte) {
     this.compiled.push(byte);
+};
+
+Parser.prototype.peek = function() {
+    return this.compiled[this.pos() - 1];
 };
 
 // Get position.
@@ -50,10 +55,12 @@ Parser.prototype.parseLine = function(line) {
 
     // Jump codes are handled differently
     if (REGEX_JUMP.test(line)) {
-        var parts = line.match(REGEX_JUMP);
+        var name = line.match(REGEX_JUMP)[1];
+
+        debug('declaring jump code', name);
 
         // No bytes are emitted on jump codes.
-        this.jumps[parts[0]] = this.pos();
+        this.jumps[name] = this.pos();
         return;
     }
     
@@ -80,14 +87,22 @@ Parser.prototype.parseLine = function(line) {
                     break;
                 // Terminated argument.
                 case PARSER_ARG:
-                    var byte;
+                    if (REGEX_INT.test(buffer)) {
+                        this.emit(parseInt(buffer));
+                    } else {
+                        debug('emit loc for call/ret', buffer, this.peek(), this.jumps[buffer]);
 
-                    if (REGEX_INT.test(buffer))
-                        byte = parseInt(buffer);
-                    else
-                        throw new Error('you\'re special, but idk how to do that');
+                        // Must be ret or call
+                        var prev = this.peek();
+                        if ([opcodes['call'], opcodes['ret'], opcodes['jump']].indexOf(prev) === -1)
+                            throw new Error('malformed argument to non-call/ret opcode');
 
-                    this.emit(byte);
+                        if (this.jumps[buffer] === undefined)
+                            throw new Error('unknown function name');
+
+                        this.emit(this.jumps[buffer]);
+                    }
+
                     status = PARSER_WS_AF;
 
                     break;

@@ -5,6 +5,8 @@ module.exports = {
     'nop'  : 0x01,
     'sys'  : 0x02,
     'jump' : 0x03,
+    'call' : 0x04,
+    'ret'  : 0x05,
     // 0x1. stack management
     'push' : 0x10,
     'pop'  : 0x11,

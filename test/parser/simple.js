@@ -65,3 +65,14 @@ test('single opcode with arguments and whitespace and comment', function(t) {
 
     t.deepEqual(parser.compiled, [0x10, 0x00]);
 });
+
+test('simple loop', function(t) {
+    t.plan(1);
+
+    var code = 'func: \n nop \n jump func';
+
+    var parser = new Parser(code);
+    parser.start();
+
+    t.deepEqual(parser.compiled, [0x01, 0x03, 0]);
+});
