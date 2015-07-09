@@ -43,3 +43,7 @@ test('single opcode with arguments and whitespace and comment', function(t) {
 test('simple loop', function(t) {
     go(t, 'func: \n nop \n jump func', [0x01, 0x03, 0]);
 });
+
+test('simple call', function(t) {
+    go(t, 'name: \n iadd \n ret \n \n main: \n call name \n imul \n', [0x40, 0x05, 0x04, 0, 0x42]);
+})
